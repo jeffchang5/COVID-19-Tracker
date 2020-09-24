@@ -6,7 +6,6 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import io.jeffchang.core.BuildConfig
-import io.jeffchang.core.network.AuthInterceptor
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -26,20 +25,11 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideAuthInterceptor(
-    ): AuthInterceptor {
-        return AuthInterceptor()
-    }
-
-    @Provides
-    @Singleton
     fun provideOkHttpClient(
-        cache: Cache,
-        authInterceptor: AuthInterceptor
+        cache: Cache
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .cache(cache)
-            .addInterceptor(authInterceptor)
             .connectTimeout(10, TimeUnit.SECONDS)
             .build()
     }

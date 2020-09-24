@@ -76,4 +76,8 @@ object Deps {
         const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.Glide.glide}"
         const val glide = "com.github.bumptech.glide:glide:${Versions.Glide.glide}"
     }
+
+    object PhilRay {
+        const val MPAndroidChart = "com.github.PhilJay:MPAndroidChart:v3.1.0"
+    }
 }

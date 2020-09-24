@@ -37,6 +37,11 @@ android {
 
 initSharedDependencies()
 initTestDependencies()
+repositories {
+    maven {
+        setUrl("https://jitpack.io")
+    }
+}
 
 dependencies {
     implementation(project(":core"))
@@ -47,7 +52,7 @@ dependencies {
 
     debugImplementation(Deps.Facebook.soLoader)
     debugImplementation(Deps.Facebook.flipper)
-
+    implementation(Deps.PhilRay.MPAndroidChart)
     implementation(Deps.Glide.glide)
     kapt(Deps.Glide.glideCompiler)
 

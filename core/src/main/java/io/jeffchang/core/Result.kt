@@ -41,9 +41,17 @@ data class Success<out T : Any>(val data: T) : Result<T>()
 data class Failure(val networkException: NetworkException) : Result<Nothing>()
 
 // Wraps around api call and maps it to success or failure states using our DomainMapper.
-suspend fun <T : DomainMapper<R>, R : Any> safeApiCall(block: suspend () -> T): Result<R> {
+suspend fun <T : DomainMapper<R>, R : Any> safeApiCallDomain(block: suspend () -> T): Result<R> {
     return try {
         Success(block().mapToDomainModel())
+    } catch (e: Exception) {
+        Failure(catchException(e))
+    }
+}
+
+suspend fun <T : Any> safeApiCall(block: suspend () -> T): Result<T> {
+    return try {
+        Success(block())
     } catch (e: Exception) {
         Failure(catchException(e))
     }

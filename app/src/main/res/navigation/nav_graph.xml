@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/BusinessFragment">
+    app:startDestination="@id/DailyCaseFragment">
 
     <fragment
-        android:id="@+id/BusinessFragment"
-        android:name="io.jeffchang.businesslist.ui.business.view.BusinessListFragment"
-        android:label="@string/business_list"
-        tools:layout="@layout/fragment_business_list" />
+        android:id="@+id/DailyCaseFragment"
+        android:name="io.jeffchang.covidtracking.ui.dailycase.view.DailyCaseFragment"
+        android:label="@string/daily_cases"
+        tools:layout="@layout/fragment_DailyCase_list" />
 
 </navigation>
